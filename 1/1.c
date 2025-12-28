@@ -1,39 +1,35 @@
 #include <stdio.h>
 
-int main()
+int main(void)
 {
-    int i,n,j,space;
-    scanf("%d",&n);
+    int i, j, n, mid, start;
+    if (scanf("%d", &n) != 1 || n <= 0) return 0;
 
-    for(i=1;i<=n;i+=2)
-    {
-        space=(n-i)/2;
+    mid = (n + 1) / 2;
 
-        for(j=0;j<space;j++)
+    for (i = 1; i <= mid; i++) {
+        for (j = 1; j <= mid - i; j++) 
         {
             printf(" ");
         }
-        for(j=1;j<=i;j++)
+        for (j = 1; j <= 2 * i - 1; j++)
         {
             printf("*");
         }
         printf("\n");
     }
-
-    for(i=n-2;i>=1;i-=2)
+    start = (n % 2 == 0) ? mid : (mid - 1);
+    for (i = start; i >= 1; i--) 
     {
-        space=(n-i)/2;
-
-        for(j=0;j<space;j++)
+        for (j = 1; j <= mid - i; j++)
         {
-            printf(" ");
+             printf(" ");
         }
-        for(j=0;j<i;j++)
+        for (j = 1; j <= 2 * i - 1; j++)
         {
             printf("*");
         }
         printf("\n");
     }
+    return 0;
 }
-
-
